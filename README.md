@@ -11,6 +11,7 @@ Getting Your DigitalOcean API Token
 
 Log into your DigitalOcean account at cloud.digitalocean.com
 Navigate to API in the left sidebar, or visit cloud.digitalocean.com/account/api/tokens
+
 Click Generate New Token
 Give it a name (e.g., "Terraform")
 Select Write scope (Terraform needs both read and write permissions)
