@@ -1,12 +1,35 @@
-resource "digitalocean_droplet" "NYC01" {
-  image    = "ubuntu-24-04-x64"   
-  name     = "NYC2UBUNTU01"
+resource "digitalocean_droplet" "nyc" {
+  image    = "ubuntu-24-04-x64"
+  name     = "web-nyc2"
   region   = "nyc2"
-  size     = "s-1vcpu-1gb"     
+  size     = "s-1vcpu-1gb"
+  
+  tags = ["web", "production", "nyc"]
 }
-resource "digitalocean_droplet" SFO1" {
-  image    = "ubuntu-24-04-x64"   
-  name     = "SF01UBUNTU01"
-  region   = "sfo1"
-  size     = "s-1vcpu-1gb"     
+
+# Droplet in San Francisco
+resource "digitalocean_droplet" "sfo" {
+  image    = "ubuntu-24-04-x64"
+  name     = "web-sfo3"
+  region   = "sfo3"
+  size     = "s-1vcpu-1gb"
+  
+  tags = ["web", "production", "sfo"]
+}
+
+# Outputs
+output "nyc_droplet" {
+  value = {
+    name   = digitalocean_droplet.nyc.name
+    ip     = digitalocean_droplet.nyc.ipv4_address
+    region = digitalocean_droplet.nyc.region
+  }
+}
+
+output "sfo_droplet" {
+  value = {
+    name   = digitalocean_droplet.sfo.name
+    ip     = digitalocean_droplet.sfo.ipv4_address
+    region = digitalocean_droplet.sfo.region
+  }
 }
