@@ -1,9 +1,22 @@
+data "digitalocean_ssh_key" "macosx" {
+  name = "macosx"  # Use exact name from DO dashboard
+}
+
+data "digitalocean_ssh_key" "terraform" {
+  name = "terraform"  # Use exact name from DO dashboard
+}
+
+
+
+
+
 resource "digitalocean_droplet" "nyc" {
   image  = "ubuntu-24-04-x64"
   name   = "web-nyc2"
   region = "nyc2"
   size   = "s-1vcpu-1gb"
   ipv6     = true               # Enable IPv6
+  ssh_keys = [data.digitalocean_ssh_key.macosx.id]
 
   tags = ["web", "production", "nyc"]
 }
@@ -15,6 +28,7 @@ resource "digitalocean_droplet" "sfo" {
   region = "sfo3"
   size   = "s-1vcpu-1gb"
   ipv6     = true               # Enable IPv6
+  ssh_keys = [data.digitalocean_ssh_key.terraform.id]
 
   tags = ["web", "production", "sfo"]
 }
