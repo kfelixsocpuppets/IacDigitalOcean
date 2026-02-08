@@ -6,9 +6,7 @@ data "digitalocean_ssh_key" "terraform" {
   name = "terraform"  # Use exact name from DO dashboard
 }
 
-
-
-
+#-------------------------
 
 resource "digitalocean_droplet" "nyc" {
   image  = "ubuntu-24-04-x64"
