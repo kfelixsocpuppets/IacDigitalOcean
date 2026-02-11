@@ -7,7 +7,7 @@ data "digitalocean_ssh_key" "terraform" {
 }
 
 
-
+#-------------FW TAGs
 
 resource "digitalocean_tag" "fw_sql" {
   name = "fw_sql"
@@ -17,12 +17,11 @@ resource "digitalocean_tag" "fw_app" {
   name = "fw_app"
 }
 
-
-
-
 resource "digitalocean_tag" "fw_web" {
   name = "fw_web"
 }
+
+#-------------INSTANCES
 
 resource "digitalocean_droplet" "nyc" {
   image  = "ubuntu-24-04-x64"
