@@ -38,7 +38,7 @@ resource "digitalocean_firewall" "mydropslets" {
   # Allow HTTP_RANGE
   inbound_rule {
     protocol         = "tcp"
-    port_range       = "8082-8-8084"
+    port_range       = "8082-8084"
     source_addresses = ["0.0.0.0/0", "::/0"]
   }
 
